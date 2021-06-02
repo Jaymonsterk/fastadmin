@@ -1,0 +1,33 @@
+<?php
+
+return [
+    'Reportid'         => '唯一ID标示',
+    'Uid'              => '用户id',
+    'Uname'            => '用户名',
+    'Upuid'            => '上级uid',
+    'Upuname'          => '上级用户名',
+    'Firstuid'         => '大股东uid',
+    'Firstuname'       => '大股东用户名',
+    'Path'             => '代理路径大股东默认为0',
+    'Level'            => '代理等级',
+    'Isnew'            => '今日注册',
+    'Isfistdeposit'    => '今日首冲',
+    'Usemoney'         => '任务金额',
+    'Reward'           => '任务佣金',
+    'Commission'       => '下级返金',
+    'Totalnum'         => '总次数',
+    'Successnum'       => '成功次数',
+    'Failnum'          => '失败次数',
+    'Depositmoney'     => '存款金额',
+    'Depositnum'       => '存款次数',
+    'Withdrawalsmoney' => '取款金额',
+    'Withdrawalsnum'   => '取款次数',
+    'Zcsmoney'         => '注册送活动金额',
+    'Qdmoney'          => '签到活动金额',
+    'Yqzdmoney'        => '邀请做单活动金额',
+    'Yqczmoney'        => '邀请充值活动金额',
+    'Yebmoney'         => '余额宝活动金额',
+    'Times'            => '当天0点0分时间戳',
+    'Dates'            => '日期',
+    'Ctime'            => '创建时间'
+];

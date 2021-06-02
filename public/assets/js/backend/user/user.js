@@ -5,11 +5,12 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             // 初始化表格参数配置
             Table.api.init({
                 extend: {
-                    index_url: 'user/user/index',
+                    index_url: 'user/user/index' + location.search,
                     add_url: 'user/user/add',
                     edit_url: 'user/user/edit',
                     del_url: 'user/user/del',
                     multi_url: 'user/user/multi',
+                    //import_url: 'user/user/import',
                     table: 'user',
                 }
             });
@@ -20,27 +21,48 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             table.bootstrapTable({
                 url: $.fn.bootstrapTable.defaults.extend.index_url,
                 pk: 'id',
-                sortName: 'user.id',
+                sortName: 'id',
+                //切换卡片视图和表格视图两种模式
+                showToggle:false,
+                //显示隐藏列可以快速切换字段列的显示和隐藏
+                showColumns:true,
+                //导出整个表的所有行导出整个表的所有行
+                showExport:false,
+                //搜索
+                search: false,
+                //搜索功能，
+                commonSearch: true,
+                //表格上方的搜索搜索指表格上方的搜索
+                searchFormVisible: true,
                 columns: [
                     [
                         {checkbox: true},
-                        {field: 'id', title: __('Id'), sortable: true},
-                        {field: 'group.name', title: __('Group')},
-                        {field: 'username', title: __('Username'), operate: 'LIKE'},
-                        {field: 'nickname', title: __('Nickname'), operate: 'LIKE'},
-                        {field: 'email', title: __('Email'), operate: 'LIKE'},
+                        {field: 'id', title: __('Id')},
+                        {field: 'areacode', title: __('Areacode'), operate: 'LIKE'},
+                        {field: 'uname', title: __('Uname'), operate: 'LIKE'},
+                        {field: 'nname', title: __('Nname'), operate: 'LIKE'},
+                        {field: 'passwd', title: __('Passwd'), operate: 'LIKE'},
+                        {field: 'paypasswd', title: __('Paypasswd'), operate: 'LIKE'},
                         {field: 'mobile', title: __('Mobile'), operate: 'LIKE'},
-                        {field: 'avatar', title: __('Avatar'), events: Table.api.events.image, formatter: Table.api.formatter.image, operate: false},
-                        {field: 'level', title: __('Level'), operate: 'BETWEEN', sortable: true},
-                        {field: 'gender', title: __('Gender'), visible: false, searchList: {1: __('Male'), 0: __('Female')}},
-                        {field: 'score', title: __('Score'), operate: 'BETWEEN', sortable: true},
-                        {field: 'successions', title: __('Successions'), visible: false, operate: 'BETWEEN', sortable: true},
-                        {field: 'maxsuccessions', title: __('Maxsuccessions'), visible: false, operate: 'BETWEEN', sortable: true},
-                        {field: 'logintime', title: __('Logintime'), formatter: Table.api.formatter.datetime, operate: 'RANGE', addclass: 'datetimerange', sortable: true},
-                        {field: 'loginip', title: __('Loginip'), formatter: Table.api.formatter.search},
-                        {field: 'jointime', title: __('Jointime'), formatter: Table.api.formatter.datetime, operate: 'RANGE', addclass: 'datetimerange', sortable: true},
-                        {field: 'joinip', title: __('Joinip'), formatter: Table.api.formatter.search},
-                        {field: 'status', title: __('Status'), formatter: Table.api.formatter.status, searchList: {normal: __('Normal'), hidden: __('Hidden')}},
+                        {field: 'email', title: __('Email'), operate: 'LIKE'},
+                        {field: 'creditscore', title: __('Creditscore'), operate: 'LIKE'},
+                        {field: 'money', title: __('Money'), operate:'BETWEEN'},
+                        {field: 'yebmoney', title: __('Yebmoney'), operate:'BETWEEN'},
+                        {field: 'historyrechargelmoney', title: __('Historyrechargelmoney'), operate:'BETWEEN'},
+                        {field: 'isfistdeposit', title: __('Isfistdeposit'), searchList: {"1":__('Isfistdeposit 1'),"0":__('Isfistdeposit 0')}, formatter: Table.api.formatter.normal},
+                        {field: 'vnum', title: __('Vnum')},
+                        {field: 'vname', title: __('Vname'), operate: 'LIKE'},
+                        {field: 'vmonadmun', title: __('Vmonadmun'), operate: 'LIKE'},
+                        {field: 'status', title: __('Status'), searchList: {"1":__('Status 1'),"2":__('Status 2'),"3":__('Status 3')}, formatter: Table.api.formatter.status},
+                        {field: 'cip', title: __('Cip'), operate: 'LIKE'},
+                        {field: 'ctime', title: __('Ctime'), operate:'RANGE', addclass:'datetimerange', autocomplete:false, formatter: Table.api.formatter.datetime},
+                        {field: 'cdate', title: __('Cdate'), operate: 'LIKE'},
+                        {field: 'lip', title: __('Lip'), operate: 'LIKE'},
+                        {field: 'ltime', title: __('Ltime'), operate:'RANGE', addclass:'datetimerange', autocomplete:false, formatter: Table.api.formatter.datetime},
+                        {field: 'ldate', title: __('Ldate'), operate: 'LIKE'},
+                        {field: 'aid', title: __('Aid')},
+                        {field: 'aname', title: __('Aname'), operate: 'LIKE'},
+                        {field: 'utime', title: __('Utime'), operate:'RANGE', addclass:'datetimerange', autocomplete:false, formatter: Table.api.formatter.datetime},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]

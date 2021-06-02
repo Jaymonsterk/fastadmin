@@ -1,0 +1,19 @@
+<?php
+
+return [
+    'Uid'            => '用户id',
+    'Uname'          => '用户名',
+    'Sid'            => '三方id',
+    'Sname'          => '三方名',
+    'Orderid'        => '订单号',
+    'Money'          => '充值金额',
+    'Truemoney'      => '实际到账金额',
+    'Sfjson'         => '提交三方信息',
+    'Sfcallbackjson' => '三方回调信息',
+    'Status'         => '状态 1进行中 2成功 3关闭 ',
+    'Note'           => '备注',
+    'Ctime'          => '添加时间',
+    'Aid'            => '操作者id',
+    'Aname'          => '操作者用户名',
+    'Utime'          => '操作者时间'
+];

@@ -1,0 +1,70 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Vnum')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-vnum" class="form-control" name="row[vnum]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Vname')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-vname" class="form-control" name="row[vname]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Taskmoney')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-taskmoney" class="form-control" name="row[taskmoney]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Paymoney')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-paymoney" class="form-control" name="row[paymoney]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Vmonadmun')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-vmonadmun" class="form-control" name="row[vmonadmun]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Creditscore')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-creditscore" class="form-control" name="row[creditscore]" type="text" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Note')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-note" class="form-control" name="row[note]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Aid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-aid" data-rule="required" class="form-control" name="row[aid]" type="number" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Aname')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-aname" class="form-control" name="row[aname]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Utime')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-utime" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[utime]" type="text" value="{:date('Y-m-d H:i:s')}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

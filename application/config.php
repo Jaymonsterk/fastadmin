@@ -57,9 +57,9 @@ return [
     // | 模块设置
     // +----------------------------------------------------------------------
     // 默认模块名
-    'default_module'         => 'index',
+    'default_module'         => 'admin',
     // 禁止访问模块
-    'deny_module_list'       => ['common', 'admin'],
+    'deny_module_list'       => ['common', 'index', 'api'],
     // 默认控制器名
     'default_controller'     => 'Index',
     // 默认操作名
@@ -251,7 +251,7 @@ return [
         // 驱动方式
         'type'     => 'Mysql',
         // 缓存前缀
-        'key'      => 'i3d6o32wo8fvs1fvdpwens',
+        'key'      => '9VfKNiy5gEUSz8AajsmOXx4MeCTdqLJc',
         // 加密方式
         'hashalgo' => 'ripemd160',
         // 缓存有效期 0表示永久缓存
