@@ -2,7 +2,9 @@
 
 return [
     'Name'          => '三方名',
-    'Status'        => '状态 1开启 2关闭',
+    'Status'        => '状态',
+    'Status 1'      => '开启',
+    'Status 2'      => '关闭',
     'Sort'          => '排序',
     'Showmoney'     => '三方金额配置',
     'Ds_notify_url' => '代收通知地址',

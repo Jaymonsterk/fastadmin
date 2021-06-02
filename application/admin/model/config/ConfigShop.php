@@ -2,16 +2,12 @@
 
 namespace app\admin\model\config;
 
+use think\Cache;
 use think\Model;
 
 
 class ConfigShop extends Model
 {
-
-    
-
-    
-
     // 表名
     protected $table = 'config_shop';
     
@@ -26,18 +22,63 @@ class ConfigShop extends Model
     // 追加属性
     protected $append = [
         'usetime_text',
+        'status_text',
         'utime_text'
     ];
-    
 
-    
+    protected static function init()
+    {
+        self::beforeInsert(function ($row) {
+            //操作者
+            if (!isset($row['aid']) || !$row['aid']) {
+                $row['aid'] = session('admin.id');
+            }
+            if (!isset($row['aname']) || !$row['aname']) {
+                $row['aname'] = session('admin.username');
+            }
+            if (!isset($row['utime']) || !$row['utime']) {
+                $row['utime'] = time();
+            }
+            //清理缓存
+            //$key = "Config:ConfigShop";
+            //Cache::store('redis')->rm($key);
+        });
 
+        self::beforeUpdate(function ($row) {
+            //操作者
+            $row['aid'] = session('admin.id');
+            $row['aname'] = session('admin.username');
+            $row['utime'] = time();
+            //清理缓存
+            //$key = "Config:ConfigShop";
+            //Cache::store('redis')->rm($key);
+        });
+
+        self::afterDelete(function ($row) {
+            //清理缓存
+            //$key = "Config:ConfigShop";
+            //Cache::store('redis')->rm($key);
+        });
+    }
+    
+    public function getStatusList()
+    {
+        return ['1' => __('Status 1'), '2' => __('Status 2')];
+    }
 
 
     public function getUsetimeTextAttr($value, $data)
     {
         $value = $value ? $value : (isset($data['usetime']) ? $data['usetime'] : '');
         return is_numeric($value) ? date("Y-m-d H:i:s", $value) : $value;
+    }
+
+
+    public function getStatusTextAttr($value, $data)
+    {
+        $value = $value ? $value : (isset($data['status']) ? $data['status'] : '');
+        $list = $this->getStatusList();
+        return isset($list[$value]) ? $list[$value] : '';
     }
 
 

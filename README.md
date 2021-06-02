@@ -67,13 +67,13 @@ php think crud -t user_money_log -c log/MoneyLog -u 1
 
 ### 更新SQL
 
-ALTER TABLE `dianzan_v2`.`user`
+ALTER TABLE `dianzan`.`user`
 MODIFY COLUMN `isfistdeposit` int NOT NULL DEFAULT 0 COMMENT '是否完成首冲:1=是,0=否' AFTER `historyrechargelmoney`,
 MODIFY COLUMN `status` int NOT NULL DEFAULT 1 COMMENT '状态:1=正常,2=停用(不可登录),3=可登录停止提现' AFTER `vmonadmun`;
-ALTER TABLE `dianzan_v2`.`user`
+ALTER TABLE `dianzan`.`user`
 MODIFY COLUMN `isfistdeposit` enum('0','1') NOT NULL DEFAULT '0' COMMENT '是否完成首冲:1=是,0=否' AFTER `historyrechargelmoney`,
 MODIFY COLUMN `status` enum('1','2','3') NOT NULL DEFAULT '1' COMMENT '状态:1=正常,2=停用(不可登录),3=可登录停止提现' AFTER `vmonadmun`;
-ALTER TABLE `dianzan_v2`.`user`
+ALTER TABLE `dianzan`.`user`
 MODIFY COLUMN `isfistdeposit` int NOT NULL DEFAULT 0 COMMENT '是否完成首冲:1=是,0=否' AFTER `historyrechargelmoney`,
 MODIFY COLUMN `status` int NOT NULL DEFAULT 1 COMMENT '状态:1=正常,2=停用(不可登录),3=可登录停止提现' AFTER `vmonadmun`;
 
@@ -84,13 +84,20 @@ MODIFY COLUMN `status` enum('1','2','3') CHARACTER SET utf8mb4 COLLATE utf8mb4_u
 ALTER TABLE `dianzan`.`order_user_shop`
 MODIFY COLUMN `status` int(4) NOT NULL DEFAULT 1 COMMENT '状态:1=进行中,2=成功,3=失败' AFTER `creditscore`;
 
-ALTER TABLE `dianzan_v2`.`order_user_signin`
+ALTER TABLE `dianzan`.`order_user_signin`
 MODIFY COLUMN `status` enum('1','2') NOT NULL DEFAULT '1' COMMENT '状态:1=已使用,2=未使用' AFTER `reward`;
-ALTER TABLE `dianzan_v2`.`order_user_signin`
+ALTER TABLE `dianzan`.`order_user_signin`
 MODIFY COLUMN `status` int NOT NULL DEFAULT 1 COMMENT '状态:1=已使用,2=未使用' AFTER `reward`;
 
-ALTER TABLE `dianzan_v2`.`order_user_yuebao`
+ALTER TABLE `dianzan`.`order_user_yuebao`
 MODIFY COLUMN `status` enum('1','2','3') NOT NULL DEFAULT '1' COMMENT '状态:1=进行中,2=成功,3=停止' AFTER `cdate`;
 
-ALTER TABLE `dianzan_v2`.`config_activity`
+ALTER TABLE `dianzan`.`config_activity`
 MODIFY COLUMN `status` enum('1','2') NOT NULL DEFAULT '1' COMMENT '状态:1=开启,2=关闭' AFTER `sort`;
+
+ALTER TABLE `dianzan`.`user_deposit_sf`
+MODIFY COLUMN `status` enum('1','2') NOT NULL DEFAULT '1' COMMENT '状态:1=开启,2=关闭' AFTER `name`;
+
+ALTER TABLE `dianzan`.`config_shop`
+MODIFY COLUMN `status` enum('1','2') NOT NULL DEFAULT '1' COMMENT '状态:1=开启,2=关闭' AFTER `creditscore`;
+

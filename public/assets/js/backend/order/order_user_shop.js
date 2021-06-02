@@ -46,7 +46,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'usemoney', title: __('Usemoney'), operate: 'LIKE'},
                         {field: 'reward', title: __('Reward'), operate: false},
                         {field: 'image', title: __('Image'), operate: false, events: Table.api.events.image, formatter: Table.api.formatter.image},
-                        {field: 'vnum', title: __('Vnum'),searchList:Config.vip_list},
+                        {field: 'vnum', title: __('Vnum'),searchList:Config.vip_list, formatter: Table.api.formatter.normal},
                         {field: 'usetime', title: __('Usetime'), operate: false},
                         // {field: 'creditscore', title: __('Creditscore'), operate: false},
                         {field: 'status', title: __('Status'), searchList: {"1":__('Status 1'),"2":__('Status 2'),"3":__('Status 3')}, formatter: Table.api.formatter.status},
