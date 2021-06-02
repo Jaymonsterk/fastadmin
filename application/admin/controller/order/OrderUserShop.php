@@ -23,6 +23,7 @@ class OrderUserShop extends Backend
         parent::_initialize();
         $this->model = new \app\admin\model\order\OrderUserShop;
         $this->view->assign("statusList", $this->model->getStatusList());
+        $this->assignconfig('vip_list',get_vip_list());
     }
 
 

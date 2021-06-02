@@ -23,6 +23,7 @@ class OrderUserSignin extends Backend
         parent::_initialize();
         $this->model = new \app\admin\model\order\OrderUserSignin;
         $this->view->assign("statusList", $this->model->getStatusList());
+        $this->assignconfig("conifg_signin",config("site.conifg_signin"));
     }
 
 

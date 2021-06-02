@@ -15,8 +15,8 @@ echo "init starting..."
   php think crud -t order_user_yuebao -c order/OrderUserYuebao -u 1 --force=true
 
 
-  php think crud -t config_carousel -c config/ConfigCarousel -u 1 --force=true
-  php think crud -t config_activity -c config/ConfigActivity -u 1 --force=true
+  php think crud -t config_carousel -c config/ConfigCarousel -u 1 --fields=id,title,img,jumpurl,sort,note --imagefield=img --force=true
+  php think crud -t config_activity -c config/ConfigActivity -u 1 --fields=id,title,img,jumpurl,sort,status,note --imagefield=img --force=true
   php think crud -t config_vip -c config/ConfigVip -u 1 --force=true
   php think crud -t user_deposit_sf -c config/UserDepositSf -u 1 --force=true
   php think crud -t config_shop -c config/ConfigShop -u 1 --force=true

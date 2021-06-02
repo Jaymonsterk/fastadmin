@@ -44,7 +44,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'signinid', title: __('Signinid'),operate: false},
                         {field: 'snum', title: __('Snum')},
                         // {field: 'type', title: __('Type')},
-                        {field: 'typename', title: __('Typename'), operate: 'LIKE'},
+                        {field: 'typename', title: __('Typename'),searchList:Config.conifg_signin, operate: 'LIKE'},
                         {field: 'reward', title: __('Reward'), operate: false},
                         {field: 'status', title: __('Status'), searchList: {"1":__('Status 1'),"2":__('Status 2')}, formatter: Table.api.formatter.status},
                         {field: 'ctime', title: __('Ctime'), operate:'RANGE', addclass:'datetimerange', autocomplete:false, formatter: Table.api.formatter.datetime},

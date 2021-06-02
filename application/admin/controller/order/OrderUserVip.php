@@ -22,7 +22,7 @@ class OrderUserVip extends Backend
     {
         parent::_initialize();
         $this->model = new \app\admin\model\order\OrderUserVip;
-
+        $this->assignconfig('vip_list',get_vip_list());
     }
 
 

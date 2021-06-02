@@ -92,3 +92,5 @@ MODIFY COLUMN `status` int NOT NULL DEFAULT 1 COMMENT '状态:1=已使用,2=未�
 ALTER TABLE `dianzan_v2`.`order_user_yuebao`
 MODIFY COLUMN `status` enum('1','2','3') NOT NULL DEFAULT '1' COMMENT '状态:1=进行中,2=成功,3=停止' AFTER `cdate`;
 
+ALTER TABLE `dianzan_v2`.`config_activity`
+MODIFY COLUMN `status` enum('1','2') NOT NULL DEFAULT '1' COMMENT '状态:1=开启,2=关闭' AFTER `sort`;

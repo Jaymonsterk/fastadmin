@@ -21,7 +21,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             table.bootstrapTable({
                 url: $.fn.bootstrapTable.defaults.extend.index_url,
                 pk: 'id',
-                sortName: 'id',
+                sortName: 'vnum',
                 //切换卡片视图和表格视图两种模式
                 showToggle:false,
                 //显示隐藏列可以快速切换字段列的显示和隐藏
@@ -33,11 +33,11 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 //搜索功能，
                 commonSearch: true,
                 //表格上方的搜索搜索指表格上方的搜索
-                searchFormVisible: true,
+                searchFormVisible: false,
                 columns: [
                     [
                         {checkbox: true},
-                        {field: 'id', title: __('Id')},
+                        {field: 'id', title: __('Id'),visible:false,operate: false},
                         {field: 'vnum', title: __('Vnum'), operate: 'LIKE'},
                         {field: 'vname', title: __('Vname'), operate: 'LIKE'},
                         {field: 'taskmoney', title: __('Taskmoney'), operate: 'LIKE'},
@@ -45,9 +45,9 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'vmonadmun', title: __('Vmonadmun'), operate: 'LIKE'},
                         {field: 'creditscore', title: __('Creditscore'), operate: 'LIKE'},
                         {field: 'note', title: __('Note'), operate: 'LIKE'},
-                        {field: 'aid', title: __('Aid')},
-                        {field: 'aname', title: __('Aname'), operate: 'LIKE'},
-                        {field: 'utime', title: __('Utime'), operate:'RANGE', addclass:'datetimerange', autocomplete:false, formatter: Table.api.formatter.datetime},
+                        {field: 'aid', title: __('Aid'),visible:false,operate: false},
+                        {field: 'aname', title: __('Aname'), operate: 'LIKE',visible:false,operate: false},
+                        {field: 'utime', title: __('Utime'), operate:'RANGE', addclass:'datetimerange', autocomplete:false, formatter: Table.api.formatter.datetime,visible:false,operate: false},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]

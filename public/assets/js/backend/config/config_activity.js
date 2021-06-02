@@ -37,16 +37,13 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 columns: [
                     [
                         {checkbox: true},
-                        {field: 'id', title: __('Id')},
+                        {field: 'id', title: __('Id'),operate: false},
                         {field: 'title', title: __('Title'), operate: 'LIKE'},
-                        {field: 'img', title: __('Img'), operate: 'LIKE'},
+                        {field: 'img', title: __('Img'), operate: false, events: Table.api.events.image, formatter: Table.api.formatter.image},
                         {field: 'jumpurl', title: __('Jumpurl'), operate: 'LIKE', formatter: Table.api.formatter.url},
+                        {field: 'sort', title: __('Sort'), sortable:true, operate: 'LIKE'},
                         {field: 'note', title: __('Note'), operate: 'LIKE'},
-                        {field: 'sort', title: __('Sort'), operate: 'LIKE'},
-                        {field: 'status', title: __('Status')},
-                        {field: 'aid', title: __('Aid')},
-                        {field: 'aname', title: __('Aname'), operate: 'LIKE'},
-                        {field: 'utime', title: __('Utime'), operate:'RANGE', addclass:'datetimerange', autocomplete:false, formatter: Table.api.formatter.datetime},
+                        {field: 'status', title: __('Status'), searchList: {"1":__('Status 1'),"2":__('Status 2')}, formatter: Table.api.formatter.status},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]

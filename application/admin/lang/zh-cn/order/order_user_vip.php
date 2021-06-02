@@ -4,7 +4,7 @@ return [
     'Uid'      => '用户id',
     'Uname'    => '用户名',
     'Orderid'  => '商品订单号',
-    'Vipid'    => 'vipid',
+    'Vipid'    => '等级',
     'Vipname'  => '等级名称',
     'Paymoney' => '金额',
     'Vipjson'  => '记录同步数据',

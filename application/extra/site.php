@@ -35,4 +35,11 @@ return array (
   'mail_smtp_pass' => 'password',
   'mail_verify_type' => '2',
   'mail_from' => '10000@qq.com',
+  'conifg_signin' => 
+  array (
+    0 => '金币奖励',
+    1 => '等级代金劵',
+    2 => '商品代金劵',
+    3 => '信用分',
+  ),
 );
