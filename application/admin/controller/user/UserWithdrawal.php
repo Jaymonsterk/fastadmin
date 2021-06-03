@@ -25,5 +25,13 @@ class UserWithdrawal extends Backend
         $this->view->assign("statusList", $this->model->getStatusList());
     }
 
-
+    /**
+     * 处理状态
+     * @param null $ids
+     */
+    public function handle($ids = null): void
+    {
+        $params = $this->request->param();
+        $this->success($params);
+    }
 }

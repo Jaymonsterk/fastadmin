@@ -51,7 +51,38 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'aid', title: __('Aid'),visible:false,operate: false},
                         {field: 'aname', title: __('Aname'),visible:false,operate: false},
                         {field: 'utime', title: __('Utime'),visible:false,operate: false},
-                        {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
+                        {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate,
+                            buttons: [
+                                {
+                                    name: 'success',
+                                    title: __('Success'),
+                                    text: __('Success'),
+                                    classname: 'btn btn-xs btn-success btn-ajax',
+                                    icon: 'fa fa-handshake-o',
+                                    url: function (row, j) {
+                                        return 'user/user_deposit/handle/ids/'+row.id+'/status/2';
+                                    },
+                                    refresh:true,
+                                    visible:function (row, j) {
+                                        return row.status == 1;
+                                    },
+                                },
+                                {
+                                    name: 'clse',
+                                    title: __('Close'),
+                                    text: __('Close'),
+                                    classname: 'btn btn-xs btn-danger btn-ajax',
+                                    icon: 'fa fa-arrow-circle-o-up',
+                                    url: function (row, j) {
+                                        return 'user/user_deposit/handle/ids/'+row.id+'/status/3';
+                                    },
+                                    refresh:true,
+                                    visible:function (row, j) {
+                                        return row.status == 1;
+                                    },
+                                },
+                                ]
+                        }
                     ]
                 ]
             });

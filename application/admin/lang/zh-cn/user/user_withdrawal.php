@@ -20,5 +20,8 @@ return [
     'Ctime'          => '创建时间',
     'Aid'            => '操作者id',
     'Aname'          => '操作者用户名',
+    'Success'        => '成功',
+    'Failure'        => '失败',
+    'Process'        => '审核并提交三方',
     'Utime'          => '操作者时间'
 ];

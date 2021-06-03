@@ -8,7 +8,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     index_url: 'user/user/index' + location.search,
                     add_url: 'user/user/add',
                     edit_url: 'user/user/edit',
-                    del_url: 'user/user/del',
+                    //del_url: 'user/user/del',
                     multi_url: 'user/user/multi',
                     //import_url: 'user/user/import',
                     table: 'user',
@@ -63,7 +63,25 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'aid', title: __('Aid'), visible:false, operate: false},
                         {field: 'aname', title: __('Aname'), visible:false, operate: false},
                         {field: 'utime', title: __('Utime'), visible:false, operate: false},
-                        {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
+                        {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate,
+                            buttons:[
+                                {
+                                    name: 'recharge',
+                                    text: __('Manual Recharge'),
+                                    classname: 'btn btn-xs btn-danger btn-dialog',
+                                    icon: 'fa fa-list',
+                                    url: function (row) {
+                                        return 'user/user/recharge/ids/'+row.id;
+                                    },
+                                    callback: function (data) {
+                                        //回调方法，用来响应 Fast.api.close()方法 **注意不能有success 是btn-ajax的回调，btn-dialog 用的callback回调，两者不能同存！！！！
+                                        //$(".btn-refresh").trigger("click");//刷新当前页面的数据
+                                        Layer.alert("recharge：" + data.msg);
+                                        //console.error(data);//控制输出回调数据
+                                    },
+                                },
+                            ]
+                        }
                     ]
                 ]
             });
@@ -75,6 +93,9 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             Controller.api.bindevent();
         },
         edit: function () {
+            Controller.api.bindevent();
+        },
+        recharge: function () {
             Controller.api.bindevent();
         },
         api: {

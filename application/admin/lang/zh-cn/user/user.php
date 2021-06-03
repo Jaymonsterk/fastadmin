@@ -31,5 +31,7 @@ return [
     'Ldate'                 => '登录时间（年月日时分秒）',
     'Aid'                   => '操作者id',
     'Aname'                 => '操作者用户名',
-    'Utime'                 => '操作者时间'
+    'Upuid'                 => '上级用户',
+    'Manual Recharge'       => '加减款',
+    'Utime'                 => '操作时间'
 ];

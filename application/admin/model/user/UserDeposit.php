@@ -8,10 +8,6 @@ use think\Model;
 class UserDeposit extends Model
 {
 
-    
-
-    
-
     // 表名
     protected $table = 'user_deposit';
     

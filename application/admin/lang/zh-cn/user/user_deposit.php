@@ -18,5 +18,7 @@ return [
     'Ctime'          => '添加时间',
     'Aid'            => '操作者id',
     'Aname'          => '操作者用户名',
+    'Success'        => '成功',
+    'Close'          => '关闭',
     'Utime'          => '操作者时间'
 ];

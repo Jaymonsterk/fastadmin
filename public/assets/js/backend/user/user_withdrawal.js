@@ -52,7 +52,62 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'aid', title: __('Aid'),visible:false,operate: false},
                         {field: 'aname', title: __('Aname'),visible:false,operate: false},
                         {field: 'utime', title: __('Utime'),visible:false,operate: false},
-                        {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
+                        {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate,
+                            buttons: [
+                                {
+                                    name: 'process',
+                                    title: __('Process'),
+                                    text: __('Process'),
+                                    classname: 'btn btn-xs btn-info btn-ajax',
+                                    icon: 'fa fa-flash',
+                                    url: function (row, j) {
+                                        return 'user/user_withdrawal/handle/ids/'+row.id+'/status/2';
+                                    },
+                                    refresh:true,
+                                    visible:function (row, j) {
+                                        return row.status == 1;
+                                    },
+                                    hidden:function (row, j) {
+                                        return row.status > 1;
+                                    }
+                                },
+                                {
+                                    name: 'success',
+                                    title: __('Success'),
+                                    text: __('Success'),
+                                    classname: 'btn btn-xs btn-success btn-ajax',
+                                    icon: 'fa fa-handshake-o',
+                                    url: function (row, j) {
+                                        return 'user/user_withdrawal/handle/ids/'+row.id+'/status/3';
+                                    },
+                                    refresh:true,
+                                    visible:function (row, j) {
+                                        return row.status == 1 || row.status == 2;
+                                    },
+                                    hidden:function (row, j) {
+                                        return row.status > 2;
+                                    }
+                                },
+                                {
+                                    name: 'failure',
+                                    title: __('Failure'),
+                                    text: __('Failure'),
+                                    classname: 'btn btn-xs btn-danger btn-ajax',
+                                    icon: 'fa fa-arrow-circle-o-up',
+                                    url: function (row, j) {
+                                        return 'user/user_withdrawal/handle/ids/'+row.id+'/status/4';
+                                    },
+                                    refresh:true,
+                                    visible:function (row, j) {
+                                        return row.status == 1 || row.status == 2;
+                                    },
+                                    //如果没有绑定过谷歌验证码则不显示
+                                    hidden:function (row, j) {
+                                        return row.status > 2;
+                                    }
+                                },
+                            ]
+                        }
                     ]
                 ]
             });
