@@ -22,7 +22,7 @@ class ConfigSignin extends Backend
     {
         parent::_initialize();
         $this->model = new \app\admin\model\config\ConfigSignin;
-
+        $this->assignconfig("conifg_signin",array_reverse(config("site.conifg_signin"),true));
     }
 
 

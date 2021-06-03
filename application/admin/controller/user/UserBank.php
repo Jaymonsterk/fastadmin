@@ -22,7 +22,7 @@ class UserBank extends Backend
     {
         parent::_initialize();
         $this->model = new \app\admin\model\user\UserBank;
-
+        $this->view->assign("statusList", $this->model->getStatusList());
     }
 
 

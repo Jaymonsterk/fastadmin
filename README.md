@@ -101,3 +101,17 @@ MODIFY COLUMN `status` enum('1','2') NOT NULL DEFAULT '1' COMMENT '状态:1=开�
 ALTER TABLE `dianzan`.`config_shop`
 MODIFY COLUMN `status` enum('1','2') NOT NULL DEFAULT '1' COMMENT '状态:1=开启,2=关闭' AFTER `creditscore`;
 
+ALTER TABLE `dianzan_v2`.`config_yuebao`
+MODIFY COLUMN `status` enum('1','2') NOT NULL DEFAULT '1' COMMENT '状态:1=开启,2=关闭' AFTER `getmoney`;
+
+ALTER TABLE `dianzan_v2`.`user_bank`
+MODIFY COLUMN `status` enum('0','1') NULL DEFAULT '1' COMMENT '状态:0=停用,1=激活' AFTER `uname`;
+
+ALTER TABLE `dianzan_v2`.`user_deposit`
+MODIFY COLUMN `status` enum('1','2','3') NOT NULL DEFAULT '1' COMMENT '状态:1=进行中,2=成功,3=关闭 ' AFTER `sfcallbackjson`;
+
+ALTER TABLE `dianzan_v2`.`user_withdrawal`
+MODIFY COLUMN `status` enum('1','2','3','4') NOT NULL DEFAULT '1' COMMENT '状态:1=进行中(待审核),2=已审核并提交三方,3=成功,4=失败' AFTER `sfcallbackjson`;
+
+
+

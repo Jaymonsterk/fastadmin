@@ -36,7 +36,7 @@ class User extends Model
     
     public function getIsfistdepositList()
     {
-        return ['1' => __('Isfistdeposit 1'), '0' => __('Isfistdeposit 0')];
+        return ['1' => __('Isfistdeposit 1'), '2' => __('Isfistdeposit 2')];
     }
 
     public function getStatusList()

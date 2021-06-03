@@ -11,5 +11,5 @@ return [
     'Status 2' => '关闭',
     'Aid'      => '操作者id',
     'Aname'    => '操作者用户名',
-    'Utime'    => '操作者时间'
+    'Utime'    => '操作时间'
 ];

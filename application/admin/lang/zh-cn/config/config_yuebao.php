@@ -9,10 +9,12 @@ return [
     'Dayproportion'    => '天利率(%)',
     'Mindayproportion' => '提前取出服务费(%)',
     'Getmoney'         => '预计收益',
-    'Status'           => '状态 1开启 2关闭',
+    'Status'           => '状态',
+    'Status 1'         => '开启',
+    'Status 2'         => '关闭',
     'Sort'             => '排序',
     'Note'             => '备注',
     'Aid'              => '操作者id',
     'Aname'            => '操作者用户名',
-    'Utime'            => '操作者时间'
+    'Utime'            => '操作时间'
 ];

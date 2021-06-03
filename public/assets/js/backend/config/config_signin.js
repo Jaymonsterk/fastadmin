@@ -37,14 +37,14 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 columns: [
                     [
                         {checkbox: true},
-                        {field: 'id', title: __('Id')},
+                        {field: 'id', title: __('Id'),operate: false},
                         {field: 'snum', title: __('Snum'), operate: 'LIKE'},
-                        {field: 'type', title: __('Type')},
-                        {field: 'typename', title: __('Typename'), operate: 'LIKE'},
+                        {field: 'type', title: __('Type'),searchList:Config.conifg_signin,formatter:Table.api.formatter.normal},
+                        {field: 'typename', title: __('Typename'), visible:false,operate: false},
                         {field: 'reward', title: __('Reward'), operate: 'LIKE'},
                         {field: 'note', title: __('Note'), operate: 'LIKE'},
-                        {field: 'aid', title: __('Aid')},
-                        {field: 'aname', title: __('Aname'), operate: 'LIKE'},
+                        {field: 'aid', title: __('Aid'), visible: false,operate: false},
+                        {field: 'aname', title: __('Aname'), visible: false,operate: false},
                         {field: 'utime', title: __('Utime'), operate:'RANGE', addclass:'datetimerange', autocomplete:false, formatter: Table.api.formatter.datetime},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]

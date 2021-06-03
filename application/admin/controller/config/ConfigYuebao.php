@@ -22,7 +22,7 @@ class ConfigYuebao extends Backend
     {
         parent::_initialize();
         $this->model = new \app\admin\model\config\ConfigYuebao;
-
+        $this->view->assign("statusList", $this->model->getStatusList());
     }
 
 

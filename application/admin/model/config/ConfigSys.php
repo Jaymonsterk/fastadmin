@@ -2,15 +2,12 @@
 
 namespace app\admin\model\config;
 
+use think\Cache;
 use think\Model;
 
 
 class ConfigSys extends Model
 {
-
-    
-
-    
 
     // 表名
     protected $table = 'config_sys';
@@ -27,14 +24,33 @@ class ConfigSys extends Model
     protected $append = [
 
     ];
-    
 
-    
+    protected static function init()
+    {
+        self::beforeInsert(function ($row) {
+            //清理缓存
+            $key = "Config:ConfigSysList";
+            Cache::store('redis')->rm($key);
+            $key = "Config:ConfigSysKeyValue";
+            Cache::store('redis')->rm($key);
+        });
 
+        self::afterUpdate(function ($row) {
+            //清理缓存
+            $key = "Config:ConfigSysList";
+            Cache::store('redis')->rm($key);
+            $key = "Config:ConfigSysKeyValue";
+            Cache::store('redis')->rm($key);
+        });
 
-
-
-
+        self::afterDelete(function ($row) {
+            //清理缓存
+            $key = "Config:ConfigSysList";
+            Cache::store('redis')->rm($key);
+            $key = "Config:ConfigSysKeyValue";
+            Cache::store('redis')->rm($key);
+        });
+    }
 
 
 }

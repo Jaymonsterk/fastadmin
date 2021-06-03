@@ -2,15 +2,12 @@
 
 namespace app\admin\model\user;
 
+use think\Cache;
 use think\Model;
 
 
 class UserBank extends Model
 {
-
-    
-
-    
 
     // 表名
     protected $table = 'user_bank';
@@ -25,13 +22,47 @@ class UserBank extends Model
 
     // 追加属性
     protected $append = [
+        'status_text',
         'ctime_text',
         'utime_text'
     ];
-    
 
-    
+    protected static function init()
+    {
+        self::beforeInsert(function ($row) {
+            //操作者
+            if (!isset($row['aid']) || !$row['aid']) {
+                $row['aid'] = session('admin.id');
+            }
+            if (!isset($row['aname']) || !$row['aname']) {
+                $row['aname'] = session('admin.username');
+            }
+            $row['ctime'] = time();
+            if (!isset($row['utime']) || !$row['utime']) {
+                $row['utime'] = time();
+            }
+        });
 
+        self::beforeUpdate(function ($row) {
+            //操作者
+            $row['aid'] = session('admin.id');
+            $row['aname'] = session('admin.username');
+            $row['utime'] = time();
+        });
+    }
+    
+    public function getStatusList()
+    {
+        return ['0' => __('Status 0'), '1' => __('Status 1')];
+    }
+
+
+    public function getStatusTextAttr($value, $data)
+    {
+        $value = $value ? $value : (isset($data['status']) ? $data['status'] : '');
+        $list = $this->getStatusList();
+        return isset($list[$value]) ? $list[$value] : '';
+    }
 
 
     public function getCtimeTextAttr($value, $data)

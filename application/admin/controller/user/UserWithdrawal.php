@@ -22,7 +22,7 @@ class UserWithdrawal extends Backend
     {
         parent::_initialize();
         $this->model = new \app\admin\model\user\UserWithdrawal;
-
+        $this->view->assign("statusList", $this->model->getStatusList());
     }
 
 

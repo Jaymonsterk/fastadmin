@@ -36,22 +36,22 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 searchFormVisible: true,
                 columns: [
                     [
-                        {checkbox: true},
-                        {field: 'id', title: __('Id')},
-                        {field: 'uid', title: __('Uid')},
+                        //{checkbox: true},
+                        {field: 'id', title: __('Id'),operate: false},
+                        {field: 'uid', title: __('Uid'),operate: false},
                         {field: 'uname', title: __('Uname'), operate: 'LIKE'},
                         {field: 'bid', title: __('Bid')},
-                        {field: 'bname', title: __('Bname'), operate: 'LIKE'},
+                        {field: 'bname', title: __('Bname'), visible:false, operate: false},
                         {field: 'orderid', title: __('Orderid'), operate: 'LIKE'},
                         {field: 'money', title: __('Money'), operate:'BETWEEN'},
-                        {field: 'fee', title: __('Fee'), operate:'BETWEEN'},
-                        {field: 'totalmoney', title: __('Totalmoney'), operate:'BETWEEN'},
-                        {field: 'status', title: __('Status')},
+                        {field: 'fee', title: __('Fee'), operate:false},
+                        {field: 'totalmoney', title: __('Totalmoney'), operate:false},
+                        {field: 'status', title: __('Status'), searchList: {"1":__('Status 1'),"2":__('Status 2'),"3":__('Status 3'),"4":__('Status 4')}, formatter: Table.api.formatter.status},
                         {field: 'note', title: __('Note'), operate: 'LIKE'},
                         {field: 'ctime', title: __('Ctime'), operate:'RANGE', addclass:'datetimerange', autocomplete:false, formatter: Table.api.formatter.datetime},
-                        {field: 'aid', title: __('Aid')},
-                        {field: 'aname', title: __('Aname'), operate: 'LIKE'},
-                        {field: 'utime', title: __('Utime'), operate:'RANGE', addclass:'datetimerange', autocomplete:false, formatter: Table.api.formatter.datetime},
+                        {field: 'aid', title: __('Aid'),visible:false,operate: false},
+                        {field: 'aname', title: __('Aname'),visible:false,operate: false},
+                        {field: 'utime', title: __('Utime'),visible:false,operate: false},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]

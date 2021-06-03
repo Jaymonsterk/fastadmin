@@ -24,6 +24,7 @@ class User extends Backend
         $this->model = new \app\admin\model\user\User;
         $this->view->assign("isfistdepositList", $this->model->getIsfistdepositList());
         $this->view->assign("statusList", $this->model->getStatusList());
+        $this->assignconfig('vip_list',get_vip_list());
     }
 
 
