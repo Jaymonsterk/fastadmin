@@ -36,7 +36,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 searchFormVisible: true,
                 columns: [
                     [
-                        //{checkbox: true},
+                        {checkbox: true},
                         {field: 'id', title: __('Id'),operate: false},
                         {field: 'uid', title: __('Uid'),operate: false},
                         {field: 'uname', title: __('Uname'), operate: 'LIKE'},
@@ -61,7 +61,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                                     classname: 'btn btn-xs btn-info btn-ajax',
                                     icon: 'fa fa-flash',
                                     url: function (row, j) {
-                                        return 'user/user_withdrawal/handle/ids/'+row.id+'/status/2';
+                                        return 'user/user_withdrawal/multi/ids/'+row.id+'/params/status=2';
                                     },
                                     refresh:true,
                                     visible:function (row, j) {
@@ -78,7 +78,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                                     classname: 'btn btn-xs btn-success btn-ajax',
                                     icon: 'fa fa-handshake-o',
                                     url: function (row, j) {
-                                        return 'user/user_withdrawal/handle/ids/'+row.id+'/status/3';
+                                        return 'user/user_withdrawal/multi/ids/'+row.id+'/params/status=3';
                                     },
                                     refresh:true,
                                     visible:function (row, j) {
@@ -95,7 +95,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                                     classname: 'btn btn-xs btn-danger btn-ajax',
                                     icon: 'fa fa-arrow-circle-o-up',
                                     url: function (row, j) {
-                                        return 'user/user_withdrawal/handle/ids/'+row.id+'/status/4';
+                                        return 'user/user_withdrawal/multi/ids/'+row.id+'/params/status=4';
                                     },
                                     refresh:true,
                                     visible:function (row, j) {

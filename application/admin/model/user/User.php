@@ -173,12 +173,15 @@ class User extends Model
         if(!in_array($moneytype,['money','agent'])){
             return false;
         }
+
+        if(empty($data)){
+            $data = self::where("id",$uid)->find();
+        }
         if($money > 0){
             self::where('id',$uid)->setInc($moneytype,$money);
         }else{
-            self::where('id',$uid)->setInc($moneytype,abs($money));
+            self::where('id',$uid)->setDec($moneytype,abs($money));
         }
-
         $user_money_log = config('site.user_money_log');
         $type_arr = isset($user_money_log[$type])?$user_money_log[$type]:$user_money_log[0];
         $arr = [];
@@ -190,7 +193,7 @@ class User extends Model
         $arr['type']=$type;
         $arr['typename']=$user_money_log[$type];
         $arr['orderid']=$orderid;
-        $arr['note']=$data['note'];
+        $arr['note']=$data['note']??"";
         $arr['ctime']=time();
         $arr['cdate']=date('Y-m-d H:i:s');
         self::inUserMoneyLog($arr);

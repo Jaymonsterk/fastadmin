@@ -3,6 +3,7 @@
 use app\common\model\Category;
 use fast\Form;
 use fast\Tree;
+use think\Cache;
 use think\Db;
 
 if (!function_exists('build_select')) {
@@ -410,7 +411,7 @@ if (!function_exists('api_curl')) {
     }
 }
 
-if (!function_exists('api_sign')) {
+if (!function_exists('get_sign')) {
     /**
      * 生成api密钥串
      * @param array $data 参数
@@ -419,7 +420,7 @@ if (!function_exists('api_sign')) {
      * @param int $timeOut 超时
      * @return string
      */
-    function api_sign($data,$apiKey){
+    function get_sign($data,$apiKey){
         foreach ($data as $key => $value) {
             if ($value == '' or $key == 'sign' or $key == 'SIGN') {
                 unset($data[$key]);
@@ -602,6 +603,7 @@ if (!function_exists('yj_pay_df')) {
         $params['returnurl']="http://www.baidu.com"; //同步跳转
         $params['sign']=get_sign($params,$key); //签名
         $url = "http://api.cctvfu.com/v1/dfpay"; //订单网关
+        print_r($params);exit();
         $result= get_curl($params,$url);
         $result=json_decode($result,true);
         if($bug == 1){
@@ -618,17 +620,17 @@ if (!function_exists('yj_pay_df')) {
 //通过ID获取单个三方配置信息
 function getSfById($sid,$type=0){
     $key = "Config:Sf:".$sid;
-    $ret = cache($key);
+    $ret = Cache::store('redis')->get($key);
     if(empty($ret) || $type ==1){
         $ret=[];
-        $data = \think\facade\Db::name("user_deposit_sf")->where('id',$sid)->where('status',1)->findOrEmpty();
+        $data = db("user_deposit_sf")->where('id',$sid)->where('status',1)->find();
         if(!empty($data)){
             $json = json_decode($data['json'],true);
             $data=array_merge($data,$json);
             $data['showmoney'] = explode(',',$data['showmoney']);
             //var_dump($data);exit;
             $ret = $data;
-            cache($key,json_encode($ret, JSON_UNESCAPED_UNICODE),1800);
+            Cache::store('redis')->set($key,json_encode($ret, JSON_UNESCAPED_UNICODE),1800);
         }else{
             return false;
         }
@@ -642,10 +644,10 @@ function getSfById($sid,$type=0){
 function getConfigSysKeyVal($type=0)
 {
     $key = "Config:ConfigSysKeyValue";
-    $ret = cache($key);
+    $ret = Cache::store('redis')->get($key);
     if(empty($ret) || $type ==1){
-        $ret=\think\facade\Db::name("config_sys")->column("value","key");
-        cache($key,json_encode($ret, JSON_UNESCAPED_UNICODE),1800);
+        $ret=db("config_sys")->column("value","key");
+        Cache::store('redis')->set($key,json_encode($ret, JSON_UNESCAPED_UNICODE),1800);
     }else{
         $ret = json_decode($ret,true);
     }

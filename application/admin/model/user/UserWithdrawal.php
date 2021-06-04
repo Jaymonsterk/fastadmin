@@ -8,10 +8,6 @@ use think\Model;
 class UserWithdrawal extends Model
 {
 
-    
-
-    
-
     // 表名
     protected $table = 'user_withdrawal';
     
@@ -29,8 +25,30 @@ class UserWithdrawal extends Model
         'ctime_text',
         'utime_text'
     ];
-    
 
+    protected static function init()
+    {
+        self::beforeInsert(function ($row) {
+            //操作者
+            if (!isset($row['aid']) || !$row['aid']) {
+                $row['aid'] = session('admin.id');
+            }
+            if (!isset($row['aname']) || !$row['aname']) {
+                $row['aname'] = session('admin.username');
+            }
+            $row['ctime'] = time();
+            if (!isset($row['utime']) || !$row['utime']) {
+                $row['utime'] = time();
+            }
+        });
+
+        self::beforeUpdate(function ($row) {
+            //操作者
+            $row['aid'] = session('admin.id');
+            $row['aname'] = session('admin.username');
+            $row['utime'] = time();
+        });
+    }
     
     public function getStatusList()
     {
