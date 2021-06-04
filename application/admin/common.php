@@ -603,7 +603,6 @@ if (!function_exists('yj_pay_df')) {
         $params['returnurl']="http://www.baidu.com"; //同步跳转
         $params['sign']=get_sign($params,$key); //签名
         $url = "http://api.cctvfu.com/v1/dfpay"; //订单网关
-        print_r($params);exit();
         $result= get_curl($params,$url);
         $result=json_decode($result,true);
         if($bug == 1){

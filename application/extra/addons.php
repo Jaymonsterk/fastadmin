@@ -2,7 +2,17 @@
 
 return [
     'autoload' => false,
-    'hooks' => [],
+    'hooks' => [
+        'upload_config_init' => [
+            'qiniu',
+        ],
+        'upload_delete' => [
+            'qiniu',
+        ],
+        'app_init' => [
+            'qiniu',
+        ],
+    ],
     'route' => [],
     'priority' => [],
 ];

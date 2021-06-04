@@ -1,5 +1,4 @@
-define([], function () {
-    //修改上传的接口调用
+//修改上传的接口调用
 require(['upload'], function (Upload) {
 
     //初始化中完成判断
@@ -132,7 +131,5 @@ require(['upload'], function (Upload) {
             });
         }
     };
-
-});
 
 });
