@@ -43,7 +43,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'uid', title: __('Uid'), visible:false, operate: false},
                         {field: 'uname', title: __('Uname'), operate: 'LIKE'},
                         {field: 'upuid', title: __('Upuid'), visible:false,operate: false},
-                        {field: 'upuname', title: __('Upuname'), visible:false,operate: false},
+                        {field: 'upuname', title: __('Upuname'), formatter:Table.api.formatter.normal},
                         {field: 'firstuid', title: __('Firstuid'), visible:false,operate: false},
                         {field: 'firstuname', title: __('Firstuname'), visible:false,operate: false},
                         {field: 'path', title: __('Path'), visible:false,operate: false},
