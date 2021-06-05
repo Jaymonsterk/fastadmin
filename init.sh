@@ -30,3 +30,4 @@ echo "init starting..."
   php think crud -t report_agency_day -c report/ReportAgencyDay -u 1 --force=true
 
   php think crud -t user_money_log -c log/MoneyLog -u 1 --force=true
+  php think crud -t user_operation_log -c log/UserOperationLog -u 1 --force=true
