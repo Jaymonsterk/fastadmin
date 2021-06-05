@@ -4,7 +4,7 @@ return array (
   'name' => '巴西任务盘',
   'beian' => '',
   'cdnurl' => '',
-  'version' => '1.0.1',
+  'version' => '1.0.2',
   'timezone' => 'Asia/Kolkata',
   'forbiddenip' => '',
   'languages' => 

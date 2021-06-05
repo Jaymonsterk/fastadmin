@@ -36,7 +36,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 searchFormVisible: true,
                 columns: [
                     [
-                        {checkbox: true},
+                        // {checkbox: true},
                         {field: 'id', title: __('Id'),visible:false, operate: false},
                         {field: 'ynum', title: __('Ynum'), operate: 'LIKE'},
                         {field: 'yname', title: __('Yname'), operate: 'LIKE'},
