@@ -1,10 +1,10 @@
 <?php
 
 return array (
-  'name' => '巴西任务盘',
+  'name' => 'GBSGoGo',
   'beian' => '',
   'cdnurl' => '',
-  'version' => '1.0.2',
+  'version' => '1.0.3',
   'timezone' => 'Asia/Kolkata',
   'forbiddenip' => '',
   'languages' => 
