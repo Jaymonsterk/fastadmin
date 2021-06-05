@@ -49,7 +49,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'money', title: __('Money'),sortable:true, operate:'BETWEEN'},
                         {field: 'yebmoney', title: __('Yebmoney'),sortable:true, operate:'BETWEEN'},
                         {field: 'historyrechargelmoney', title: __('Historyrechargelmoney'),sortable:true, operate:'BETWEEN'},
-                        {field: 'isfistdeposit', title: __('Isfistdeposit'), searchList: {"1":__('Isfistdeposit 1'),"2":__('Isfistdeposit 2')}, formatter: Table.api.formatter.normal},
+                        {field: 'isfistdeposit', title: __('Isfistdeposit'), searchList: {"0":__('Isfistdeposit 1'),"1":__('Isfistdeposit 2')}, formatter: Table.api.formatter.normal},
                         {field: 'vnum', title: __('Vnum'), sortable:true,searchList: Config.vip_list, formatter: Table.api.formatter.normal},
                         //{field: 'vname', title: __('Vname'), operate: 'LIKE'},
                         {field: 'vmonadmun', title: __('Vmonadmun'),sortable:true, operate: false},

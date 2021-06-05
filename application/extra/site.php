@@ -4,7 +4,7 @@ return array (
   'name' => 'GBSGoGo',
   'beian' => '',
   'cdnurl' => '',
-  'version' => '1.0.3',
+  'version' => '1.0.4',
   'timezone' => 'Asia/Kolkata',
   'forbiddenip' => '',
   'languages' => 
