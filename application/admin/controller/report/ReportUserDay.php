@@ -321,16 +321,16 @@ class ReportUserDay extends Backend
         $tmp_fields = $this->request->get("filter", '');
         $where_fields = (array)json_decode($tmp_fields, true);
         $has_time = true;
-        if(!isset($where_fields['ctime']) || empty($where_fields['ctime'])){
+        if(!isset($where_fields['times']) || empty($where_fields['times'])){
             $has_time = false;
-            $where_fields['ctime'] = $today_range;
+            $where_fields['times'] = $today_range;
         }
 
         //操作符
         $tmp_op = $this->request->get("op", '');
         $where_op = (array)json_decode($tmp_op, true);
-        if(!isset($where_op['ctime']) || empty($where_op['ctime'])){
-            $where_op['ctime'] = $time_op;
+        if(!isset($where_op['times']) || empty($where_op['times'])){
+            $where_op['times'] = $time_op;
         }
 
         if($action == "withdraw") {

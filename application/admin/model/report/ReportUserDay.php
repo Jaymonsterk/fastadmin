@@ -25,7 +25,8 @@ class ReportUserDay extends Model
 
     // 追加属性
     protected $append = [
-        'ctime_text'
+        'ctime_text',
+        'times_text',
     ];
     
 
@@ -40,6 +41,17 @@ class ReportUserDay extends Model
     }
 
     protected function setCtimeAttr($value)
+    {
+        return $value === '' ? null : ($value && !is_numeric($value) ? strtotime($value) : $value);
+    }
+
+    public function getTimesTextAttr($value, $data)
+    {
+        $value = $value ? $value : (isset($data['times']) ? $data['times'] : '');
+        return is_numeric($value) ? date("Y-m-d H:i:s", $value) : $value;
+    }
+
+    protected function setTimesAttr($value)
     {
         return $value === '' ? null : ($value && !is_numeric($value) ? strtotime($value) : $value);
     }

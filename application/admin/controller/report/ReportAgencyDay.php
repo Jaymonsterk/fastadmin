@@ -36,7 +36,7 @@ class ReportAgencyDay extends Backend
 
             $has_time = $this->params();
             list($where, $sort, $order, $offset, $limit) = $this->buildparams();
-            $field = "uid,uname,upuid,upuname,reportid,id,path,dates, ";
+            $field = "uid,uname,upuid,upuname,reportid,id,path,times,dates, ";
             $field .= " downnum,alldownnum,sum(`isnew`) as isnew, ";
             $field .= " sum(`isfistdeposit`) as isfistdeposit, sum(`usemoney`) as usemoney, sum(`reward`) as reward, ";
             $field .= " sum(`commission`) as commission, sum(`totalnum`) as totalnum, sum(`successnum`) as successnum, ";
@@ -77,16 +77,16 @@ class ReportAgencyDay extends Backend
         $tmp_fields = $this->request->get("filter", '');
         $where_fields = (array)json_decode($tmp_fields, true);
         $has_time = true;
-        if(!isset($where_fields['ctime']) || empty($where_fields['ctime'])){
+        if(!isset($where_fields['times']) || empty($where_fields['times'])){
             $has_time = false;
-            $where_fields['ctime'] = $today_range;
+            $where_fields['times'] = $today_range;
         }
 
         //操作符
         $tmp_op = $this->request->get("op", '');
         $where_op = (array)json_decode($tmp_op, true);
-        if(!isset($where_op['ctime']) || empty($where_op['ctime'])){
-            $where_op['ctime'] = $time_op;
+        if(!isset($where_op['times']) || empty($where_op['times'])){
+            $where_op['times'] = $time_op;
         }
 
         $tmp_fields = json_encode($where_fields);

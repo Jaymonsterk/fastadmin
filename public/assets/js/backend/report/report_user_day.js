@@ -206,7 +206,7 @@ define(['jquery', 'bootstrap', 'backend', 'addtabs', 'table', 'form', 'echarts',
                         // {field: 'yqczmoney', title: __('Yqczmoney'), operate:'BETWEEN', sortable:true},
                         // {field: 'yebmoney', title: __('Yebmoney'), operate:'BETWEEN', sortable:true},
                         //{field: 'times', title: __('Times')},
-                        {field: 'ctime', title: __('Ctime'), visible:false,operate:'RANGE', addclass:'datetimerange', autocomplete:false, formatter: Table.api.formatter.datetime},
+                        {field: 'times', title: __('Ctime'), visible:false,operate:'RANGE', addclass:'datetimerange', autocomplete:false, formatter: Table.api.formatter.datetime},
                         // {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]
@@ -274,7 +274,7 @@ define(['jquery', 'bootstrap', 'backend', 'addtabs', 'table', 'form', 'echarts',
                         // {field: 'yqczmoney', title: __('Yqczmoney'), operate:'BETWEEN', sortable:true},
                         // {field: 'yebmoney', title: __('Yebmoney'), operate:'BETWEEN', sortable:true},
                         //{field: 'times', title: __('Times')},
-                        {field: 'ctime', title: __('Ctime'), visible:false,operate:'RANGE', addclass:'datetimerange', autocomplete:false, formatter: Table.api.formatter.datetime},
+                        {field: 'times', title: __('Ctime'), visible:false,operate:'RANGE', addclass:'datetimerange', autocomplete:false, formatter: Table.api.formatter.datetime},
                         // {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]
@@ -342,7 +342,7 @@ define(['jquery', 'bootstrap', 'backend', 'addtabs', 'table', 'form', 'echarts',
                         // {field: 'yqczmoney', title: __('Yqczmoney'), operate:'BETWEEN', sortable:true},
                         // {field: 'yebmoney', title: __('Yebmoney'), operate:'BETWEEN', sortable:true},
                         //{field: 'times', title: __('Times')},
-                        {field: 'ctime', title: __('Ctime'), visible:false,operate:'RANGE', addclass:'datetimerange', autocomplete:false, formatter: Table.api.formatter.datetime},
+                        {field: 'times', title: __('Ctime'), visible:false,operate:'RANGE', addclass:'datetimerange', autocomplete:false, formatter: Table.api.formatter.datetime},
                         // {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]
