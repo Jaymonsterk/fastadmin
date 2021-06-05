@@ -5,7 +5,7 @@ return array (
   'beian' => '',
   'cdnurl' => '',
   'version' => '1.0.1',
-  'timezone' => 'Asia/Shanghai',
+  'timezone' => 'Asia/Kolkata',
   'forbiddenip' => '',
   'languages' => 
   array (
