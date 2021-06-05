@@ -41,7 +41,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'uid', title: __('Uid')},
                         {field: 'uname', title: __('Uname'), operate: 'LIKE'},
                         {field: 'orderid', title: __('Orderid'), operate: 'LIKE'},
-                        {field: 'vipid', title: __('Vipid'),searchList:Config.vip_list, formatter: Table.api.formatter.normal},
+                        {field: 'vipid', title: __('Vipid'), sortable:true,searchList:Config.vip_list, formatter: Table.api.formatter.normal},
                         // {field: 'vipname', title: __('Vipname'),searchList:Config.vip_list,operate: false},
                         {field: 'paymoney', title: __('Paymoney'), operate: 'LIKE'},
                         {field: 'vipjson', title: __('Vipjson'), operate: 'LIKE',visible: false,operate: false},

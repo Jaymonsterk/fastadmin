@@ -37,7 +37,7 @@ return [
     'Today total withdraw' => '今日总提现',
     'Total withdraw' => '历史总提现',
     'Today new user' => '今日新增用户',
-    'Today deposit user' => '今日下单用户数',
+    'Today deposit user' => '今日充值用户数',
     'Today withdraw user' => '今日提现用户数',
     'Total buy user' => '今日下单用户数',
     'Today yuebao' => '今日存入余额宝',
