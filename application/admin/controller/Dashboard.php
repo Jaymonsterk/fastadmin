@@ -49,7 +49,7 @@ class Dashboard extends Backend
             'totaluser'       => User::count(),
             'totaladdon'      => count(get_addon_list()),
             'totaladmin'      => Admin::count(),
-            'totalcategory'   => 0,//\app\common\model\Category::count(),
+            //'totalcategory'   => 0,//\app\common\model\Category::count(),
             'todayusersignup' => User::whereTime('ctime', 'today')->count(),
             'todayuserlogin'  => User::whereTime('ctime', 'today')->count(),
             'sevendau'        => User::whereTime('ctime|ltime|utime', '-7 days')->count(),

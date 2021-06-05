@@ -45,7 +45,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'dayproportion', title: __('Dayproportion'),visible:false, operate: false},
                         {field: 'mindayproportion', title: __('Mindayproportion'),visible:false, operate: false},
                         {field: 'getmoney', title: __('Getmoney'), operate: 'LIKE'},
-                        {field: 'status', title: __('Status'), searchList: {"1":__('Status 1'),"2":__('Status 2')}, formatter: Table.api.formatter.status},
+                        {field: 'status', title: __('Status'), searchList: {"1":__('Status 1'),"2":__('Status 2')}, yes:1, no:2, formatter: Table.api.formatter.toggle},
                         {field: 'sort', title: __('Sort'),visible:false, operate: false},
                         {field: 'note', title: __('Note'), operate: 'LIKE'},
                         {field: 'aid', title: __('Aid'),visible:false, operate: false},

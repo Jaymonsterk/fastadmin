@@ -178,13 +178,31 @@ return [
     // +----------------------------------------------------------------------
     'cache'                  => [
         // 驱动方式
-        'type'   => 'File',
-        // 缓存保存目录
-        'path'   => CACHE_PATH,
-        // 缓存前缀
-        'prefix' => '',
-        // 缓存有效期 0表示永久缓存
-        'expire' => 0,
+        'type'   => 'complex',
+
+        // 默认(文件缓存)
+        'default'=>[
+            // 驱动方式
+            'type'   => 'File',
+            // 缓存保存目录
+            'path'   => CACHE_PATH,
+            // 缓存前缀
+            'prefix' => '',
+            // 缓存有效期 0表示永久缓存
+            'expire' => 0,
+
+        ],
+
+        //redis缓存设置
+        'redis'   =>  [
+            // 驱动方式
+            'type'   => 'redis',
+            // 服务器地址
+            'host'   => Env::get('redis.host', '127.0.0.1'),  //redis服务器ip
+            'port'   => Env::get('redis.port', '6379'),
+            'password'=>Env::get('redis.password', ''),
+            'timeout' => Env::get('redis.timeout', 3600),
+        ],
     ],
     // +----------------------------------------------------------------------
     // | 会话设置

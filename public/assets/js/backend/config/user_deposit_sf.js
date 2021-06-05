@@ -39,7 +39,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {checkbox: true},
                         {field: 'id', title: __('Id'),visible:false,operate: false},
                         {field: 'name', title: __('Name'), operate: 'LIKE'},
-                        {field: 'status', title: __('Status'), searchList: {"1":__('Status 1'),"2":__('Status 2')}, formatter: Table.api.formatter.status},
+                        {field: 'status', title: __('Status'), searchList: {"1":__('Status 1'),"2":__('Status 2')}, yes:1,no:2,formatter: Table.api.formatter.toggle},
                         {field: 'sort', title: __('Sort'), operate: false},
                         {field: 'showmoney', title: __('Showmoney'), operate: false},
                         {field: 'ds_notify_url', title: __('Ds_notify_url'), operate: false, formatter: Table.api.formatter.url},

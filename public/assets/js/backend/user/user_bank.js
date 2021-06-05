@@ -40,7 +40,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'id', title: __('Id'),operate: false},
                         {field: 'uid', title: __('Uid')},
                         {field: 'uname', title: __('Uname'), operate: 'LIKE'},
-                        {field: 'status', title: __('Status'), searchList: {"0":__('Status 0'),"1":__('Status 1')}, formatter: Table.api.formatter.status},
+                        {field: 'status', title: __('Status'), searchList: {"0":__('Status 0'),"1":__('Status 1')}, formatter: Table.api.formatter.toggle},
                         {field: 'accountname', title: __('Accountname'), operate: 'LIKE'},
                         {field: 'accountnum', title: __('Accountnum'), operate: 'LIKE'},
                         {field: 'ifcscode', title: __('Ifcscode'), operate: 'LIKE'},

@@ -47,7 +47,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'vnum', title: __('Vnum'), searchList:Config.vip_list, formatter: Table.api.formatter.normal},
                         {field: 'usetime', title: __('Usetime'), operate: false},
                         {field: 'creditscore', title: __('Creditscore'), operate: false},
-                        {field: 'status', title: __('Status'), searchList: {"1":__('Status 1'),"2":__('Status 2')}, formatter: Table.api.formatter.status},
+                        {field: 'status', title: __('Status'), searchList: {"1":__('Status 1'),"2":__('Status 2')}, yes:1, no:2, formatter: Table.api.formatter.toggle},
                         {field: 'sort', title: __('Sort'), operate: false},
                         {field: 'note', title: __('Note'), operate: 'LIKE'},
                         // {field: 'aid', title: __('Aid')},
