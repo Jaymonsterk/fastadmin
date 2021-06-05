@@ -60,6 +60,14 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
         },
         api: {
             bindevent: function () {
+                // 给上传按钮添加上传成功事件
+                $("#faupload-img").data("upload-success", function (data) {
+                    var url = Backend.api.cdnurl(data.url, Config.upload.cdnurl);
+                    $("#c-img").val(url);
+                    console.log(url);
+                    Toastr.success("上传成功！");
+                });
+
                 Form.api.bindevent($("form[role=form]"));
             }
         }
