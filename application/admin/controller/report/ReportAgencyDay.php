@@ -54,6 +54,11 @@ class ReportAgencyDay extends Backend
             if($has_time) {
                 foreach ($list as $row) {
                     $row['dates'] = "范围时间";
+                    //处理下级用户
+                    $where_newuser = ['uid'=>$row['uid']];
+                    $ret = \app\admin\model\report\ReportAgencyDay::where($where_newuser)->field('downnum,alldownnum')->order("dates desc")->fetchSql(false)->find();
+                    $row['downum'] = (int)($ret['downnum']??0);
+                    $row['alldownnum'] = (int)($ret['alldownnum']??0);
                 }
             }
 
