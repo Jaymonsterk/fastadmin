@@ -1,0 +1,33 @@
+<?php
+
+return [
+    'Id' =>'ID',
+    'Areacode' =>'Area code',
+    'Uname' =>'Username',
+    'Nname' =>'Nickname',
+    'Passwd' =>'Passwd',
+    'Paypasswd' =>'Fund password',
+    'Mobile' =>'Mobile',
+    'Email' =>'Email',
+    'Creditscore' =>'Creditscore',
+    'Money' =>'Account balance',
+    'Yebmoney' =>'Yuebao balance',
+    'Isfistdeposit 2'=>'Yes',
+    'Isfistdeposit 1'=>'No',
+    'Vnum' =>'Level',
+    'Vname' =>'Class name',
+    'Status' =>'Status',
+    'Status 1'=>'Normal',
+    'Status 2'=>'Disable (cannot log in)',
+    'Status 3'=>'Login (forbid withdrawal)',
+    'Cip' =>'Register ip',
+    'Ctime' =>'Registration time',
+    'Cdate' =>'Registration time',
+    'Lip' =>'Login ip',
+    'Ltime' =>'Login time',
+    'Ldate' =>'Login time',
+    'Aid' =>'Operator id',
+    'Aname' =>'Operator user name',
+    'Upuid' =>'Upper User',
+    'Utime' =>'Operation time'
+];
