@@ -638,15 +638,16 @@ if (!function_exists('baxi_pay_df')) {
 function getBaxiDfData($data = []){
     require_once EXTEND_PATH."/Aescbc7.php";
     $AesCBC7 = new AesCBC7();//实例化
-    $sf_config = getSfById(2);
+    $sf_config = getSfById(2,1);
     $sf_data = json_decode($sf_config['json'], true);
-    $secret = $sf_data['apisecret'];//平台分配
+//    print_r($sf_data);exit();
+    $secret = $sf_data['apiserect'];//平台分配
     $apikey = $sf_data['apikey'];//平台分配
     //data代付明文数据
     $arr = array(
         //基本信息
         'head' => array(
-            "tradeno" => time().mt_rand(),//批次号（唯一）
+            "tradeno" => $data['orderid'],//批次号（唯一）
             "mchid" => $sf_data['mchid'],//商户号
             "notifyurl" => $sf_config['df_notify_url'],//回调地址
             "timestamp" => getMillisecond()
@@ -665,6 +666,7 @@ function getBaxiDfData($data = []){
             )
         )
     );
+    logs($arr);
     $json = json_encode($arr,320);//代付明文数据转为json字符串
     $aesdata = $AesCBC7->encryptBySecret($json,$secret);//对数据进行加密
     $ts = getMillisecond();
@@ -707,12 +709,13 @@ function getDfTokenData(){
     $AesCBC7 = new AesCBC7();//实例化
     $sf_config = getSfById(2);
     $sf_data = json_decode($sf_config['json'], true);
-    $secret = $sf_data['apisecret'];//平台分配
+    $secret = $sf_data['apiserect'];//平台分配
     $tm = getMillisecond();//13位时间戳
     $arr = array('timestamp'=>$tm,'secret'=>$secret);//加密数据
     $json = json_encode($arr);//转json
     $data = $AesCBC7->encryptBySecret($json,$secret);//加密
     $arr['data'] = $data;//token数据
+    $arr['apiid'] = $sf_data['apiid'];//apiid
     return $arr;
 }
 
@@ -722,7 +725,7 @@ function getDfToken(){
     $tokenData = getDfTokenData();//token 数据
     //获取token参数
     $arr = array(
-        'apiid' => '07f72c64c659bfef65074418642f5de8',//平台分配
+        'apiid' => $tokenData['apiid'],//平台分配
         'data' => $tokenData['data']//token数据
     );
     $res = send_post($getTokenUrl,$arr);//发送请求

@@ -29,6 +29,43 @@ class UserWithdrawal extends Backend
     }
 
     /**
+     * 查看
+     */
+    public function index()
+    {
+        //当前是否为关联查询
+        $this->relationSearch = false;
+        //设置过滤方法
+        $this->request->filter(['strip_tags', 'trim']);
+        if ($this->request->isAjax()) {
+            //如果发送的来源是Selectpage，则转发到Selectpage
+            if ($this->request->request('keyField')) {
+                return $this->selectpage();
+            }
+            list($where, $sort, $order, $offset, $limit) = $this->buildparams();
+
+            //1.0 查找代理下线
+            $list = $this->model
+                ->where($where)
+                ->order($sort, $order)
+                ->paginate($limit);
+
+            foreach ($list as $row) {
+                $json_arr = json_decode($row['sfjson'], true);
+                $row['accountname'] = $json_arr['accountname'];
+                $row['accountnum'] = $json_arr['accountnum'];
+                $row['ifcscode'] = $json_arr['ifcscode'];
+                $row['upi'] = $json_arr['upi'];
+            }
+
+            $result = array("total" => $list->total(), "rows" => $list->items());
+
+            return json($result);
+        }
+        return $this->view->fetch();
+    }
+
+    /**
      * 批量处理状态
      * @param null $ids
      */
@@ -113,15 +150,24 @@ class UserWithdrawal extends Backend
                         $ret['msg'] = "代付配置错误，请检查";
                     }else {
                         $data = json_decode($row['sfjson'], true);
-                        $data['amount'] = $row['money'];
+                        $data['amount'] = sprintf("%0.2f",$row['money']);
                         $data['orderid'] = $row['orderid'];
                         $data['payname'] = $data['accountname'];
                         $data['paynumber'] = $data['accountnum'];
                         $data['ifsccode'] = $data['ifcscode'];
                         $data['notifyurl'] = $sf_config['df_notify_url'];
                         $ret = baxi_pay_df($sf_config, $data);
-                        $ret['continue'] = true;
-                        //$ret['msg'] = "提交三方代付成功";
+                        if(!is_array($ret)){
+                            $ret = json_decode($ret,true);
+//                            var_dump($ret);exit();
+                            if($ret['code'] !== 0){
+                                $ret['continue'] = false;
+                            }else{
+                                $ret['continue'] = true;
+                            }
+                        }else{
+                            $ret['continue'] = true;
+                        }
                     }
                 }
                 break;
