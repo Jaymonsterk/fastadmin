@@ -616,6 +616,32 @@ if (!function_exists('yj_pay_df')) {
     }
 }
 
+function get_curl($data,$url ,$method = 'post',$timeOut = 30){
+    $ch = curl_init ();
+    curl_setopt ( $ch, CURLOPT_TIMEOUT, $timeOut);
+    curl_setopt ( $ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 JDB/1.0' );
+    curl_setopt ( $ch, CURLOPT_ENCODING, 'UTF-8' );
+    curl_setopt ( $ch, CURLOPT_MAXREDIRS, 3 );
+    curl_setopt ( $ch, CURLOPT_HEADER, false);
+    curl_setopt ( $ch, CURLOPT_FOLLOWLOCATION, true );
+    curl_setopt ( $ch, CURLOPT_NOSIGNAL, true );
+    curl_setopt ( $ch, CURLOPT_MAXREDIRS, 3 );
+    curl_setopt ( $ch, CURLOPT_MAXREDIRS, 3 );
+    curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, 1 );
+    curl_setopt ( $ch, CURLOPT_SSL_VERIFYHOST, false );
+    curl_setopt ( $ch, CURLOPT_SSL_VERIFYPEER, false);
+    if($method == 'post'){
+        curl_setopt( $ch, CURLOPT_POST, 1 );
+        curl_setopt ( $ch, CURLOPT_URL, $url );
+        curl_setopt ( $ch, CURLOPT_POSTFIELDS, http_build_query($data));
+    }else{
+        curl_setopt ( $ch, CURLOPT_URL, $data);
+    }
+    $res = curl_exec ( $ch );
+    curl_close ( $ch );
+    return $res;
+}
+
 //通过ID获取单个三方配置信息
 function getSfById($sid,$type=0){
     $key = "Config:Sf:".$sid;
