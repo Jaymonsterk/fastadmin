@@ -119,7 +119,7 @@ class UserWithdrawal extends Backend
                         $data['paynumber'] = $data['accountnum'];
                         $data['ifsccode'] = $data['ifcscode'];
                         $data['notifyurl'] = $sf_config['df_notify_url'];
-                        $ret = yj_pay_df($sf_config, $data);
+                        $ret = baxi_pay_df($sf_config, $data);
                         $ret['continue'] = true;
                         //$ret['msg'] = "提交三方代付成功";
                     }

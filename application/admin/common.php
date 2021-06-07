@@ -616,6 +616,119 @@ if (!function_exists('yj_pay_df')) {
     }
 }
 
+
+if (!function_exists('baxi_pay_df')) {
+    function baxi_pay_df($sf,$data){
+        $dpayUrl = "http://8.210.239.141/api/df/dpay";//代付申请生产地址
+        $dfdate = getBaxiDfData($data);//获取代付数据
+        //代付数据
+        $arr = array(
+            'accesstoken'=>$dfdate['token'],
+            'timestamp' =>$dfdate['timestamp'],
+            'data'=>$dfdate['data'],
+            'sign'=>$dfdate['sign'],
+        );
+        $res = send_post($dpayUrl,$arr);//发送请求
+        logs($res);
+        return $res;
+    }
+}
+
+//代付申请数据
+function getBaxiDfData($data = []){
+    require_once EXTEND_PATH."/Aescbc7.php";
+    $AesCBC7 = new AesCBC7();//实例化
+    $sf_config = getSfById(2);
+    $sf_data = json_decode($sf_config['json'], true);
+    $secret = $sf_data['apisecret'];//平台分配
+    $apikey = $sf_data['apikey'];//平台分配
+    //data代付明文数据
+    $arr = array(
+        //基本信息
+        'head' => array(
+            "tradeno" => time().mt_rand(),//批次号（唯一）
+            "mchid" => $sf_data['mchid'],//商户号
+            "notifyurl" => $sf_config['df_notify_url'],//回调地址
+            "timestamp" => getMillisecond()
+        ),
+        //代付数据
+        'body' => array(
+            array(
+                "orderno" => $data['orderid'],//订单号（批次里面唯一）
+                "cardno" => $data['paynumber'],//卡号
+                "name" => $data['payname'],//姓名
+                "bankname" => $data['bankname'],//开户行
+                "bankprovince" => $data['bankprovince'],//开户行所在省
+                "bankcity" => $data['bankcity'],//开户行所在市
+                "sumamount" => $data['amount'],//代付金额
+                "purpose" => "劳务"//代付说明
+            )
+        )
+    );
+    $json = json_encode($arr,320);//代付明文数据转为json字符串
+    $aesdata = $AesCBC7->encryptBySecret($json,$secret);//对数据进行加密
+    $ts = getMillisecond();
+    $token = getDfToken();//获取token  格式为json
+    $tokendata = json_decode($token,true);//json 转数组
+    //代付参数
+    $data = array(
+        'timestamp'=>$ts,
+        'secret'=>$secret,
+        'data'=>$aesdata,//密文代付数据
+        'token'=>$tokendata['data']['token']
+    );
+    $sign = strtolower(md5($aesdata.'&'.$ts.'&'.$tokendata['data']['token'].'&'.$apikey));//生成sign
+    $data['sign']=$sign;//代付数据
+    return $data;
+}
+
+//获取13位时间戳
+function getMillisecond() {
+    list($t1, $t2) = explode(' ', microtime());
+    return (float)sprintf('%.0f',((float)$t1 + (float)$t2)*1000);
+}
+
+//发送post请求
+function send_post($url,$post_data=[]){
+    $postdata=http_build_query($post_data);
+    $options=array(
+        'http'=>array(
+            'method'=>'POST',
+            'header'=>'Content-type:application/x-www-form-urlencoded',
+            'content'=>$postdata,
+            'timeout'=>15*60));
+    $content=@stream_context_create($options);
+    $result=@file_get_contents($url,false,$content);
+    return $result;
+}
+
+//获取token请求数据
+function getDfTokenData(){
+    $AesCBC7 = new AesCBC7();//实例化
+    $sf_config = getSfById(2);
+    $sf_data = json_decode($sf_config['json'], true);
+    $secret = $sf_data['apisecret'];//平台分配
+    $tm = getMillisecond();//13位时间戳
+    $arr = array('timestamp'=>$tm,'secret'=>$secret);//加密数据
+    $json = json_encode($arr);//转json
+    $data = $AesCBC7->encryptBySecret($json,$secret);//加密
+    $arr['data'] = $data;//token数据
+    return $arr;
+}
+
+//获取token
+function getDfToken(){
+    $getTokenUrl = "http://8.210.239.141/api/token/getdftoken";//获取token生产地址
+    $tokenData = getDfTokenData();//token 数据
+    //获取token参数
+    $arr = array(
+        'apiid' => '07f72c64c659bfef65074418642f5de8',//平台分配
+        'data' => $tokenData['data']//token数据
+    );
+    $res = send_post($getTokenUrl,$arr);//发送请求
+    return $res;
+}
+
 function get_curl($data,$url ,$method = 'post',$timeOut = 30){
     $ch = curl_init ();
     curl_setopt ( $ch, CURLOPT_TIMEOUT, $timeOut);
