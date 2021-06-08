@@ -156,7 +156,7 @@ class UserWithdrawal extends Backend
                         $data['paynumber'] = $data['accountnum'];
                         $data['ifsccode'] = $data['ifcscode'];
                         $data['notifyurl'] = $sf_config['df_notify_url'];
-                        $ret = baxi_pay_df($sf_config, $data);
+                        $ret = yj_pay_df($sf_config, $data);
                         if(!is_array($ret)){
                             $ret = json_decode($ret,true);
 //                            var_dump($ret);exit();
